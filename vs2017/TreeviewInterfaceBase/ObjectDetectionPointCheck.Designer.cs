@@ -43,12 +43,15 @@
             this.label_ModelFilePath = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_openFileButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label_Mode = new System.Windows.Forms.Label();
             this.comboBox_Mode = new System.Windows.Forms.ComboBox();
+            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Param = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_openFileButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox_Answer = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MaskList)).BeginInit();
@@ -125,6 +128,7 @@
             this.dataGridView_MaskList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_MaskList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_Name,
+            this.Column_Param,
             this.Column_Path,
             this.Column_openFileButton});
             this.dataGridView_MaskList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,27 +238,10 @@
             this.panel4.Size = new System.Drawing.Size(10, 268);
             this.panel4.TabIndex = 0;
             // 
-            // Column_Name
-            // 
-            this.Column_Name.Frozen = true;
-            this.Column_Name.HeaderText = "Name";
-            this.Column_Name.Name = "Column_Name";
-            // 
-            // Column_Path
-            // 
-            this.Column_Path.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_Path.HeaderText = "Path";
-            this.Column_Path.Name = "Column_Path";
-            // 
-            // Column_openFileButton
-            // 
-            this.Column_openFileButton.HeaderText = "...";
-            this.Column_openFileButton.MinimumWidth = 20;
-            this.Column_openFileButton.Name = "Column_openFileButton";
-            this.Column_openFileButton.Width = 20;
-            // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.textBox_Answer);
+            this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.comboBox_Mode);
             this.panel5.Controls.Add(this.label_Mode);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -286,6 +273,51 @@
             this.comboBox_Mode.Name = "comboBox_Mode";
             this.comboBox_Mode.Size = new System.Drawing.Size(120, 20);
             this.comboBox_Mode.TabIndex = 1;
+            // 
+            // Column_Name
+            // 
+            this.Column_Name.Frozen = true;
+            this.Column_Name.HeaderText = "Name";
+            this.Column_Name.Name = "Column_Name";
+            this.Column_Name.Width = 75;
+            // 
+            // Column_Param
+            // 
+            this.Column_Param.HeaderText = "Param";
+            this.Column_Param.Name = "Column_Param";
+            this.Column_Param.Width = 150;
+            // 
+            // Column_Path
+            // 
+            this.Column_Path.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_Path.HeaderText = "Path";
+            this.Column_Path.Name = "Column_Path";
+            // 
+            // Column_openFileButton
+            // 
+            this.Column_openFileButton.HeaderText = "...";
+            this.Column_openFileButton.MinimumWidth = 20;
+            this.Column_openFileButton.Name = "Column_openFileButton";
+            this.Column_openFileButton.Width = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Location = new System.Drawing.Point(162, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label2.Size = new System.Drawing.Size(45, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Ans";
+            // 
+            // textBox_Answer
+            // 
+            this.textBox_Answer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_Answer.Location = new System.Drawing.Point(207, 0);
+            this.textBox_Answer.Name = "textBox_Answer";
+            this.textBox_Answer.Size = new System.Drawing.Size(223, 19);
+            this.textBox_Answer.TabIndex = 3;
             // 
             // ObjectDetectionPointCheck
             // 
@@ -327,11 +359,14 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button_getModelFilePath;
         private System.Windows.Forms.DataGridView dataGridView_MaskList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Path;
-        private System.Windows.Forms.DataGridViewButtonColumn Column_openFileButton;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ComboBox comboBox_Mode;
         private System.Windows.Forms.Label label_Mode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Param;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Path;
+        private System.Windows.Forms.DataGridViewButtonColumn Column_openFileButton;
+        private System.Windows.Forms.TextBox textBox_Answer;
+        private System.Windows.Forms.Label label2;
     }
 }
