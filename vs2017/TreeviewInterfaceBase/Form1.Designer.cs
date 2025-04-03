@@ -53,7 +53,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1066, 711);
+            this.tabControl1.Size = new System.Drawing.Size(703, 711);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage_config
@@ -64,7 +64,7 @@
             this.tabPage_config.Location = new System.Drawing.Point(4, 22);
             this.tabPage_config.Name = "tabPage_config";
             this.tabPage_config.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_config.Size = new System.Drawing.Size(1058, 685);
+            this.tabPage_config.Size = new System.Drawing.Size(695, 685);
             this.tabPage_config.TabIndex = 0;
             this.tabPage_config.Text = "Config";
             this.tabPage_config.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             this.panel_configMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_configMain.Location = new System.Drawing.Point(152, 3);
             this.panel_configMain.Name = "panel_configMain";
-            this.panel_configMain.Size = new System.Drawing.Size(903, 642);
+            this.panel_configMain.Size = new System.Drawing.Size(540, 642);
             this.panel_configMain.TabIndex = 2;
             // 
             // panel_configFrame
@@ -84,7 +84,7 @@
             this.panel_configFrame.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_configFrame.Location = new System.Drawing.Point(0, 0);
             this.panel_configFrame.Name = "panel_configFrame";
-            this.panel_configFrame.Size = new System.Drawing.Size(903, 88);
+            this.panel_configFrame.Size = new System.Drawing.Size(540, 88);
             this.panel_configFrame.TabIndex = 0;
             // 
             // panel_configBottom
@@ -93,7 +93,7 @@
             this.panel_configBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_configBottom.Location = new System.Drawing.Point(152, 645);
             this.panel_configBottom.Name = "panel_configBottom";
-            this.panel_configBottom.Size = new System.Drawing.Size(903, 37);
+            this.panel_configBottom.Size = new System.Drawing.Size(540, 37);
             this.panel_configBottom.TabIndex = 1;
             // 
             // button_Add_ObjectDetectionPointCheck
@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 711);
+            this.ClientSize = new System.Drawing.Size(703, 711);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "TreeviewInterfaceBase";

@@ -217,7 +217,7 @@ namespace WinFormStringCnvClass
                     }
                 }
 
-                if (Value.Length > 0) Lines.Add(Line);
+                if (Line.Replace("\t","").Length > c.Name.Length) Lines.Add(Line);
             }
 
             return string.Join("\r\n", Lines);

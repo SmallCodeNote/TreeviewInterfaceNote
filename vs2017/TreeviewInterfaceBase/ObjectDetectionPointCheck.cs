@@ -30,19 +30,6 @@ namespace TreeviewInterfaceBase
             get { return textBox_DataFileDirectoryPath.Text; }
         }
 
-        public string maskFilePath
-        {
-            set
-            {
-                textBox_MaskFilePath.Text = value;
-                if (File.Exists(value))
-                {
-                    updatePictureBox(pictureBox_maskImage, value);
-
-                }
-            }
-            get { return textBox_MaskFilePath.Text; }
-        }
 
         private void updatePictureBox(PictureBox pictureBox, string filePath)
         {
@@ -131,40 +118,6 @@ namespace TreeviewInterfaceBase
             updateConfigFilePath();
         }
 
-        private void button_Create_Click(object sender, EventArgs e)
-        {
-            if (pictureBox_maskImage.Image != null)
-            {
-                Bitmap bitmap = (Bitmap)pictureBox_maskImage.Image;
-                // 各ピクセルを走査
-                for (int y = 0; y < bitmap.Height; y++)
-                {
-                    for (int x = 0; x < bitmap.Width; x++)
-                    {
-                        // 現在のピクセルを取得
-                        Color pixel = bitmap.GetPixel(x, y);
-
-                        // Rの値が254である場合に変更
-                        if (pixel.R >= 240)
-                        {
-                            Color newPixel = Color.FromArgb(pixel.A, 240, pixel.G, pixel.B);
-                            bitmap.SetPixel(x, y, newPixel);
-                        }
-                        if (pixel.G >= 240)
-                        {
-                            Color newPixel = Color.FromArgb(pixel.A, pixel.R, 240, pixel.B);
-                            bitmap.SetPixel(x, y, newPixel);
-                        }
-                        if (pixel.B >= 240)
-                        {
-                            Color newPixel = Color.FromArgb(pixel.A, pixel.R, pixel.G, 240);
-                            bitmap.SetPixel(x, y, newPixel);
-                        }
-                    }
-                }
-            }
-        }
-
         private void button_getModelFilePath_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -188,41 +141,41 @@ namespace TreeviewInterfaceBase
 
         }
 
-        private void textBox_MaskFilePath_TextChanged(object sender, EventArgs e)
+        private void dataGridView_MaskList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (File.Exists(textBox_MaskFilePath.Text))
+            // ボタン列がクリックされたかを確認
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0) // 2はボタン列のインデックス
             {
-                pictureBox_maskImage.Image = new Bitmap(textBox_MaskFilePath.Text);
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = openFileDialog.FileName;
+
+                        // 選択された行のColumn_Path列にファイルパスを格納
+                        dataGridView_MaskList.Rows[e.RowIndex].Cells["Column_Path"].Value = filePath;
+                    }
+                }
             }
         }
-        bool _mouseDrug;
-        int _prevX;
-        int _prevY;
 
-        private void pictureBox_maskImage_MouseDown(object sender, MouseEventArgs e)
+        private void dataGridView_MaskList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            _mouseDrug = true;
-            _prevX = e.Location.X;
-            _prevY = e.Location.Y;
-        }
-
-        private void pictureBox_maskImage_MouseUp(object sender, MouseEventArgs e)
-        {
-            _mouseDrug = false;
-        }
-
-        private void pictureBox_maskImage_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (_mouseDrug == true)
+            int RowsCount = ((DataGridView)sender).Rows.Count-1;
+            if (e.RowIndex < RowsCount && e.ColumnIndex < 0 && e.RowIndex >= 0)
             {
-                using (Graphics g = Graphics.FromImage(pictureBox_maskImage.Image))
-                using (Pen p = new Pen(Color.Black, 3))
-                {
-                    g.DrawLine(p, _prevX, _prevY, e.Location.X, e.Location.Y);
-                    _prevX = e.Location.X;
-                    _prevY = e.Location.Y;
-                }
-                pictureBox_maskImage.Refresh();
+                e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
+                Rectangle indexRect = e.CellBounds;
+                indexRect.Inflate(-2, -2);
+
+                TextRenderer.DrawText(e.Graphics,
+                    (e.RowIndex + 1).ToString(),
+                    e.CellStyle.Font,
+                    indexRect,
+                    e.CellStyle.ForeColor,
+                    TextFormatFlags.Right | TextFormatFlags.VerticalCenter);
+
+                e.Handled = true;
             }
         }
     }
