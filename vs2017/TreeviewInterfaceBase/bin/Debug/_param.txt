@@ -1,9 +1,5 @@
-textBox_MaskFilePath	
 textBox_DataFileDirectoryPath	
-textBox_ModelFilePath	
-radioButton_nan	True
-radioButton_ch3	False
-radioButton_ch2	False
-radioButton_ch1	False
+textBox_ModelFilePath	Test3
+comboBox_Mode	Mode3
 textBox_configName	03
-textBox_configPath	
+textBox_configPath	D:\Code\25\TreeviewInterfaceBase\Config
