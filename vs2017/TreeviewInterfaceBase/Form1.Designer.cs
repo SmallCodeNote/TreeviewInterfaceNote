@@ -77,6 +77,7 @@
             // panel_configMain
             // 
             this.panel_configMain.AutoScroll = true;
+            this.panel_configMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_configMain.Controls.Add(this.panel_configFrame);
             this.panel_configMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_configMain.Location = new System.Drawing.Point(152, 3);
@@ -89,7 +90,7 @@
             this.panel_configFrame.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_configFrame.Location = new System.Drawing.Point(0, 0);
             this.panel_configFrame.Name = "panel_configFrame";
-            this.panel_configFrame.Size = new System.Drawing.Size(540, 88);
+            this.panel_configFrame.Size = new System.Drawing.Size(538, 88);
             this.panel_configFrame.TabIndex = 0;
             // 
             // panel_configBottom
@@ -164,6 +165,7 @@
             this.button_Add_ObjectDetectionPointCheck.TabIndex = 1;
             this.button_Add_ObjectDetectionPointCheck.Text = "ObjectDetectionPointCheck";
             this.button_Add_ObjectDetectionPointCheck.UseVisualStyleBackColor = true;
+            this.button_Add_ObjectDetectionPointCheck.Click += new System.EventHandler(this.button_Add_ObjectDetectionPointCheck_Click);
             // 
             // panel_AddButtonsHeader
             // 
