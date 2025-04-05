@@ -17,6 +17,7 @@ namespace TreeviewInterfaceBase
     {
         public string thisConfigPath;
         public string configName = "";
+        bool underInitialize = true;
 
         public string modeFilePath
         {
@@ -37,7 +38,6 @@ namespace TreeviewInterfaceBase
             {
                 if (pictureBox.Image != null) pictureBox.Image.Dispose();
                 pictureBox.Image = new Bitmap(filePath);
-
             }
         }
 
@@ -59,6 +59,8 @@ namespace TreeviewInterfaceBase
             {
                 this.thisConfigPath = configPath;
             }
+
+            underInitialize = false;
         }
 
         public string createNewConfigFilePath(string nodePath)
@@ -111,6 +113,7 @@ namespace TreeviewInterfaceBase
         private void button_Save_Click(object sender, EventArgs e)
         {
             SaveConfig();
+            button_Save.BackColor = SystemColors.Control;
         }
 
         private void textBox_configName_TextChanged(object sender, EventArgs e)
@@ -129,6 +132,7 @@ namespace TreeviewInterfaceBase
             textBox_ModelFilePath.Text = ofd.FileName;
         }
 
+
         private void button_getMaskFilePath_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -141,18 +145,18 @@ namespace TreeviewInterfaceBase
 
         }
 
+
+        int dataGridView_MaskList_OpenFileButtonColIndex = 3;
+
         private void dataGridView_MaskList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // ボタン列がクリックされたかを確認
-            if (e.ColumnIndex == 2 && e.RowIndex >= 0) // 2はボタン列のインデックス
+            if (e.ColumnIndex == dataGridView_MaskList_OpenFileButtonColIndex && e.RowIndex >= 0)
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string filePath = openFileDialog.FileName;
-
-                        // 選択された行のColumn_Path列にファイルパスを格納
                         dataGridView_MaskList.Rows[e.RowIndex].Cells["Column_Path"].Value = filePath;
                     }
                 }
@@ -161,7 +165,7 @@ namespace TreeviewInterfaceBase
 
         private void dataGridView_MaskList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            int RowsCount = ((DataGridView)sender).Rows.Count-1;
+            int RowsCount = ((DataGridView)sender).Rows.Count - 1;
             if (e.RowIndex < RowsCount && e.ColumnIndex < 0 && e.RowIndex >= 0)
             {
                 e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
@@ -177,6 +181,36 @@ namespace TreeviewInterfaceBase
 
                 e.Handled = true;
             }
+        }
+
+        private void updateButtonBackColor()
+        {
+            if (!underInitialize) button_Save.BackColor = Color.YellowGreen;
+        }
+
+        private void textBox_ModelFilePath_TextChanged(object sender, EventArgs e)
+        {
+            updateButtonBackColor();
+        }
+
+        private void textBox_DataFileDirectoryPath_TextChanged(object sender, EventArgs e)
+        {
+            updateButtonBackColor();
+        }
+
+        private void dataGridView_MaskList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            updateButtonBackColor();
+        }
+
+        private void comboBox_Mode_SelectedValueChanged(object sender, EventArgs e)
+        {
+            updateButtonBackColor();
+        }
+
+        private void textBox_Answer_TextChanged(object sender, EventArgs e)
+        {
+            updateButtonBackColor();
         }
     }
 }
